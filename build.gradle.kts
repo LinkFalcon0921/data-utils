@@ -1,10 +1,11 @@
+
 plugins {
     `java-library`
-    publishing
+    `maven-publish`
 }
 
 group = "com.flintCore"
-version = "1.0.2"
+version = "1.2.2"
 
 // Variables
 val javaVersion = JavaVersion.VERSION_1_9
@@ -23,6 +24,18 @@ repositories {
 publishing {
     repositories {
         mavenLocal()
+        //.run {
+        //            println("URl of repo: ${this.url}")
+        //        }
+    }
+
+    publications {
+        create<MavenPublication>("utilsLocal") {
+            groupId = project.group.toString()
+            version = project.version as String
+            pom.packaging = "jar"
+            from(components["java"])
+        }
     }
 }
 

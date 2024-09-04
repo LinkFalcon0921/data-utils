@@ -11,7 +11,7 @@ import java.util.function.UnaryOperator;
  * Use of not repeatable instances.
  * Data holders use (for listeners only) the class name to notify.
  */
-public class ListDataHolder<H> extends DataHolder<Set<H>> {
+public class ListDataHolder<H extends Comparable<H>> extends DataHolder<Set<H>> {
 
     private static final int INITIAL_CAPACITY = 5;
     private static final float LOAD_FACTOR = .18f;
